@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TTOFF999 — Hub Officiel</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons CDN (version UMD explicite) -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap');
+
+    * {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: #030712;
+      overflow-x: hidden;
+      color: #f3f4f6;
+    }
+
+    .gradient-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      background: radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.25), transparent 40%),
+                  radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.2), transparent 45%),
+                  radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15), transparent 50%),
+                  radial-gradient(circle at 70% 20%, rgba(168, 85, 247, 0.2), transparent 40%);
+      filter: blur(60px);
+      animation: pulseGlow 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.1) rotate(3deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(25px) saturate(200%);
+      -webkit-backdrop-filter: blur(25px) saturate(200%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .glass-card:hover {
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3),
+                  0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    .glass-pill {
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .shimmer-text {
+      background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 50%, #f472b6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .dynamic-island {
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-between p-4 md:p-8 select-none">
+
+  <!-- Arrière-plan flou dynamique -->
+  <div class="gradient-bg"></div>
+
+  <!-- En-tête (Barre de statut) -->
+  <header class="w-full max-w-lg mx-auto sticky top-4 z-50">
+    <div id="dynamicIsland" class="dynamic-island glass-pill rounded-full px-6 py-2.5 flex items-center justify-between shadow-2xl cursor-pointer hover:bg-black/60">
+      <div class="flex items-center space-x-2">
+        <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></div>
+        <span class="text-xs font-semibold tracking-wide text-gray-300 uppercase">TT0FF999</span>
+      </div>
+      
+      <!-- Horloge temps réel -->
+      <div id="clock" class="text-xs font-medium tracking-wider text-white">00:00</div>
+
+      <div class="flex items-center space-x-3 text-gray-300">
+        <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+        <i data-lucide="battery-charging" class="w-4 h-4 text-emerald-400"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenu Principal -->
+  <main class="w-full max-w-lg mx-auto my-auto py-8 space-y-6">
+
+    <!-- Profil Card -->
+    <div class="glass-panel rounded-3xl p-6 text-center relative overflow-hidden group">
+      <!-- Halo de lumière décoratif -->
+      <div class="absolute -right-10 -top-10 w-32 h-32 bg-indigo-500/20 rounded-full blur-2xl group-hover:bg-indigo-500/40 transition-all duration-700"></div>
+      
+      <div class="relative z-10 flex flex-col items-center">
+        <!-- Avatar -->
+        <div class="relative mb-4">
+          <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-70 blur animate-spin-slow"></div>
+          <div class="relative w-24 h-24 rounded-full overflow-hidden border-2 border-white/20 bg-slate-900 flex items-center justify-center">
+            <img src="FCB35ED3-93AC-4C80-8A75-9BC0563127AC.png" alt="Logo TT0FF999" class="w-full h-full object-cover">
+          </div>
+          <div class="absolute bottom-0 right-0 bg-blue-500 text-white rounded-full p-1 border-2 border-black" title="Vérifié">
+            <i data-lucide="check" class="w-3.5 h-3.5 stroke-[3]"></i>
+          </div>
+        </div>
+
+        <h1 class="text-2xl font-bold tracking-tight text-white mb-2">@TT0FF999</h1>
+        
+        <p class="text-xs text-gray-300/90 leading-relaxed max-w-xs mb-4">
+          Bienvenue sur mon hub personnel. Retrouvez ci-dessous l'ensemble de mes liens officiels.
+        </p>
+
+        <div class="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3 py-1 rounded-full text-[11px] text-gray-300">
+          <i data-lucide="link" class="w-3 h-3 text-indigo-400"></i>
+          <span>Mes Liens Officiels</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="space-y-3.5">
+
+      <a href="https://www.instagram.com/ttoff999/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener" class="glass-card rounded-2xl p-4 flex items-center justify-between group">
+        <div class="flex items-center space-x-4">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white shadow-lg shadow-rose-500/20 group-hover:scale-105 transition-transform">
+            <svg class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </div>
+          <div class="text-left">
+            <h2 class="font-semibold text-white text-base group-hover:text-pink-300 transition-colors">Instagram</h2>
+            <p class="text-xs text-gray-400">@ttoff999</p>
+          </div>
+        </div>
+        <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-gray-400 group-hover:bg-white/20 group-hover:text-white transition-all">
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </div>
+      </a>
+
+      <a href="https://github.com/TT0FF999" target="_blank" rel="noopener" class="glass-card rounded-2xl p-4 flex items-center justify-between group">
+        <div class="flex items-center space-x-4">
+          <div class="w-12 h-12 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center text-white shadow-lg shadow-black/40 group-hover:scale-105 transition-transform">
+            <svg class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+          </div>
+          <div class="text-left">
+            <h2 class="font-semibold text-white text-base group-hover:text-indigo-300 transition-colors">GitHub</h2>
+            <p class="text-xs text-gray-400">@TT0FF999</p>
+          </div>
+        </div>
+        <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-gray-400 group-hover:bg-white/20 group-hover:text-white transition-all">
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="glass-panel rounded-3xl p-4">
+      <button id="shareBtn" class="w-full py-3 bg-white/10 hover:bg-white/20 active:bg-white/30 border border-white/15 rounded-2xl text-xs font-semibold text-white flex items-center justify-center space-x-2 transition-all">
+        <i data-lucide="share-2" class="w-4 h-4"></i>
+        <span>Partager mon Profil</span>
+      </button>
+    </div>
+
+  </main>
+
+  <footer class="w-full max-w-lg mx-auto text-center py-4">
+    <p class="text-xs text-gray-500">
+      @TT0FF999 • Tous droits réservés
+    </p>
+    
+  </footer>
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 glass-pill px-5 py-2.5 rounded-full text-xs font-medium text-white opacity-0 pointer-events-none transition-all duration-300 flex items-center space-x-2 border border-emerald-500/30">
+    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+    <span id="toastMsg">Lien copié avec succès !</span>
+  </div>
+
+  <script>
+    function initLucideIcons() {
+      if (typeof lucide !== 'undefined' && lucide.createIcons) {
+        lucide.createIcons();
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLucideIcons);
+    } else {
+      initLucideIcons();
+    }
+
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      document.getElementById('clock').textContent = `${hours}:${minutes}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    const shareBtn = document.getElementById('shareBtn');
+    shareBtn.addEventListener('click', () => {
+      const dummy = document.createElement('input');
+      document.body.appendChild(dummy);
+      dummy.value = window.location.href;
+      dummy.select();
+      document.execCommand('copy');
+      document.body.removeChild(dummy);
+
+      showToast("Lien du profil copié dans le presse-papier !");
+    });
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.textContent = message;
+      
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      toast.classList.add('opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 3000);
+    }
+
+    document.querySelectorAll('.glass-panel, .glass-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
+      });
+    });
+  </script>
+</body>
+</html>
